@@ -111,7 +111,6 @@
 		<h2>Recent Activity</h2>
 		<div class="activity-feed">
 <?php 
-        $activities = $this->box->recent_activity();
         foreach($activities as $activity){
 ?>    
         	<div class="feed-item">

@@ -38,7 +38,7 @@ class User extends CI_Model{
 
 	function add_user($users) {
 		$query = "INSERT INTO user (screenname, email, password, city, state, country, created_at) VALUES (?, ?, ?, ?, ?, ?, NOW())";
-		$values = array($users['screenname'], $users['email'], $users['password'], $users['city'], $users['state'], $users['country']);
+		$values = array($users['screenname'], $users['email'], $users['password'], $users['city'], $users['state'], strtoupper($users['country']));
 		return $this->db->query($query, $values);
 	}
 
