@@ -30,7 +30,7 @@ class Users extends CI_Controller{
 
 			if($get_user){
 				$this->session->set_userdata("user_session", $get_user);
-				redirect(base_url("users/welcome"));
+				redirect("main/user_profile/{$get_user['id']}");
 			}
 		}else{	
 			$errors = array(validation_errors());
@@ -39,19 +39,15 @@ class Users extends CI_Controller{
 		}
 	}
 
-
-
-
 	public function add(){
-		// var_dump($this->input->post());
 		$result = $this->user->validate_register($this->input->post());
     	if($result == "valid"){
       		$user_data = $this->input->post();
 			$add_user = $this->user->add_user($user_data);
-
+			
 			if($add_user){
 				$this->session->set_userdata("user_session", $user_data);
-				redirect(base_url());
+				redirect("main/user_profile/{$user_data['id']}");
 			}
 		}else{
 			$errors = array(validation_errors());
